@@ -38,7 +38,35 @@ function generatePassword() {
         var confirmNumericCharacter = confirm("Click OK to include numeric characters");
         var confirmSpecialCharacter = confirm("Click OK to include special characters");
     } 
+
+          // Assign an action to the password parameters
+          var passwordCharacters = []
+      
+          if (confirmLowerCase) {
+            passwordCharacters = passwordCharacters.concat(lowerCase)
+          }
+          if (confirmUpperCase) {
+            passwordCharacters = passwordCharacters.concat(upperCase)
+          }
+          if (confirmSpecialCharacter) {
+            passwordCharacters = passwordCharacters.concat(specialChar)
+          }
+          if (confirmNumericCharacter) {
+            passwordCharacters = passwordCharacters.concat(number)
+          }
+          
+          console.log(passwordCharacters)
     
+          // Empty string to be filled based on for loop selecting random characters from the array
+          var randomPassword = ""
+          
+          for (var i = 0; i < confirmLength; i++) {
+            randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+            console.log(randomPassword)
+          }
+          return randomPassword;
+    }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
